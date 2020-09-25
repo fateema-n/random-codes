@@ -1,0 +1,22 @@
+year = int(input("Input a year: "))
+day = int(input("day: "))
+month = int(input("Input a month [1-12]: "))
+def next_day(year,day,month):
+    if month == 1 or month == 3 or month == 5 or month == 7 or month ==8 or month == 10 or month == 10 or month ==12:
+         days_in_month = 31
+    elif month == 2:
+         days_in_month = 28
+    else:
+         days_in_month = 30
+    
+    if day == 31 and month == 12:
+         day = 1
+         month = 1 
+         year +=1
+    elif day < days_in_month:
+         day += 1 
+    else:
+         day = 1 
+         month +=1 
+    print("%04d-%02d-%02d" % (year,month,day))
+next_day(year, 12, 12)
