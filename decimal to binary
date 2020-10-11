@@ -1,0 +1,13 @@
+n = int(input("Enter a decimal value: "))
+quotient = 0
+remainder = 0
+binary = ""
+
+while quotient != 1:
+    remainder = n % 2
+    quotient = n // 2
+    binary = binary + str(remainder)
+    n = quotient 
+    
+string = "1" + binary[::-1]
+print(string)
