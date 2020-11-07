@@ -1,0 +1,47 @@
+text = input("Enter the plaintext or ciphertext: ")
+select = int(input("Enter 1 for encoding text or 2 for decoding text: "))
+key = int(input("key: "))
+
+length = len(text)
+import string
+
+def encode(text, key):
+    string = ""
+    result = ""
+    for character in text:
+        if character.islower():
+            start = ord('a')
+        elif character.isupper():
+            start = ord('A')
+        else:
+            result += character
+        difference_from_start = ord(character) - start
+        jump_to = ((difference_from_start + key) % 26) + start
+        string = chr(jump_to)
+        result += string
+    return(result.upper())
+
+            
+def decode(text, key):
+    for character in text:
+        if character.islower():
+            end = ord('z')
+        elif character.isupper():
+            end = ord('Z')
+        else:
+            result += character
+        difference_from_end = ((end - ord(character)) + key) % 26
+        jump_to = end - difference_from_end
+        string = chr(jump_to)
+        result += string
+    return(result.upper())
+    
+
+if select == 1:
+    encode(text, key)
+elif select == 2:
+    decode(text, key)
+else:
+    print("Invalid input, try again")
+
+encode(text, 3)
